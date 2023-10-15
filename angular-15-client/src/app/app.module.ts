@@ -5,10 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RoomListComponent } from './components/room-list/room-list.component';
+import { RoomDetailComponent } from './components/room-detail/room-detail.component';
+import { RoomAddComponent } from './components/room-add/room-add.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RoomListComponent,
+    RoomDetailComponent,
+    RoomAddComponent
   ],
   imports: [
     BrowserModule,
