@@ -16,7 +16,19 @@ export class RoomService {
     return this.http.get<Room[]>(baseUrl);
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
+  get(id: number): Observable<Room> {
+    return this.http.get<Room>(`${baseUrl}/${id}`);
+  }
+
+  create(room: Room): Observable<Room> {
+    return this.http.post<Room>(baseUrl, room);
+  }
+
+  update(id: number, room: Room): Observable<Room> {
+    return this.http.put<Room>(`${baseUrl}/${id}`, room);
+  }
+
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
   }
 }

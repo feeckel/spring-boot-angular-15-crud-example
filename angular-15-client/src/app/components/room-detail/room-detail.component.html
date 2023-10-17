@@ -1,1 +1,89 @@
-<p>room-detail works!</p>
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentRoom.id">
+    <h4>Rooms</h4>
+    <div>
+      <label><strong>Title:</strong></label> {{ currentRoom.title }}
+    </div>
+    <div>
+      <label><strong>Description:</strong></label>
+      {{ currentRoom.description }}
+    </div>
+    <div>
+      <label><strong>Number of seats:</strong></label>
+      {{ currentRoom.numberOfSeats }}
+    </div>
+
+    <div>
+      <label><strong>Occupation:</strong></label>
+      {{ currentRoom.occupation ? "free" : "occupied" }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/rooms/{{ currentRoom.id }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentRoom">
+    <br />
+    <p>Please click on a Rooms...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentRoom.id" class="edit-form">
+    <h4>Rooms</h4>
+    <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+
+      <!-- Title Input -->
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title" />
+        <div *ngIf="roomForm.get('title')?.invalid && (roomForm.get('title')?.dirty || roomForm.get('title')?.touched)" class="text-danger">
+          Title is required or Title is too long.
+        </div>
+      </div>
+
+      <!-- Description Input -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description" />
+        <div *ngIf="roomForm.get('description')?.invalid && (roomForm.get('description')?.dirty || roomForm.get('description')?.touched)" class="text-danger">
+          Description is required or Description is too long.
+        </div>
+      </div>
+
+      <!-- Number of Seats Input -->
+      <div class="form-group">
+        <label for="numberOfSeats">Number of seats</label>
+        <input type="number" class="form-control" id="numberOfSeats" formControlName="numberOfSeats" />
+        <div *ngIf="roomForm.get('numberOfSeats')?.invalid && (roomForm.get('numberOfSeats')?.dirty || roomForm.get('numberOfSeats')?.touched)" class="text-danger">
+          Number of seats is required or Must be at least 1.
+        </div>
+      </div>
+
+      <!-- Occupation Input -->
+      <div class="form-group">
+        <label for="occupation">Occupation</label>
+        <input type="checkbox" class="form-control" id="occupation" formControlName="occupation" />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="roomForm.invalid">Update</button>
+    </form>
+
+
+
+    <button class="badge badge-danger mr-2" (click)="deleteRoom()">
+      Delete
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentRoom.id">
+    <br />
+    <p>Cannot access this Room...</p>
+  </div>
+</ng-template>
