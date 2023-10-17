@@ -15,8 +15,8 @@
 
 ## Backend:
 
-| Todo                                                       | Action     | Kommentar     |
-|------------------------------------------------------------|------------|---------------|
-| Implementiere CRUD-Methoden für Räume                      | Not Done   | Neue Feature  |
-| Tests für CRUD-Methoden                                    | Not Done   | Neue Feature  |       
+| Todo                                                       | Action | Kommentar     |
+|------------------------------------------------------------|------|---------------|
+| Implementiere CRUD-Methoden für Räume                      | Done | Neue Feature  |
+| Tests für CRUD-Methoden                                    | Done | Neue Feature  |       
 
