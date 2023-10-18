@@ -37,7 +37,6 @@ export class RoomAddComponent implements OnInit, OnDestroy {
         this.roomService.create(this.currentRoomForm as Room)
           .subscribe({
             next: (res) => {
-              console.log(res);
               this.submitted = true;
             },
             error: (e) => console.error(e)

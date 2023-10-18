@@ -87,7 +87,6 @@ export class RoomDetailComponent implements OnInit, OnDestroy {
           this.roomService.delete(id)
             .subscribe({
               next: (res) => {
-                console.log(res);
                 this.router.navigate(['/rooms']);
               },
               error: (e) => console.error(e)
