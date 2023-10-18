@@ -11,7 +11,7 @@
 | Komponente zum Hinzufügen von Räumen                       | Done     | Notwendige Felder und max. Länge für Titel prüfen |
 | Bearbeitungs- und Löschfunktion in der Detailansicht       | Done     |                                                   |
 | Liste und Detail nebeneinander anzeigen (Verhältnis 60/40) | Done     |                                                   |
-| Material Design Objekte verwenden                          | Not Done | but bootstrap                                     |
+| Material Design Objekte verwenden                          | Not Done | but, is use bootstrap                             |
 
 ## Backend:
 
