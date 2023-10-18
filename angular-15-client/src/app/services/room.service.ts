@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import { Room } from '../models/room.model';
 
 const baseUrl = 'http://localhost:8080/api/rooms';
@@ -9,6 +9,13 @@ const baseUrl = 'http://localhost:8080/api/rooms';
   providedIn: 'root'
 })
 export class RoomService {
+
+  private roomIdSubject = new BehaviorSubject<number >(0);
+  roomId$ = this.roomIdSubject.asObservable();
+
+  setRoomId(id: number) {
+    this.roomIdSubject.next(id);
+  }
 
   constructor(private http: HttpClient) { }
 

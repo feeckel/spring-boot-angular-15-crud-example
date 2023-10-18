@@ -1,1 +1,51 @@
-<p>room-add works!</p>
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+
+        <!-- Title Input -->
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" formControlName="title" />
+          <div *ngIf="roomForm.get('title')?.invalid && (roomForm.get('title')?.dirty || roomForm.get('title')?.touched)" class="text-danger">
+            Title is required or Title is too long.
+          </div>
+        </div>
+
+        <!-- Description Input -->
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" formControlName="description" />
+          <div *ngIf="roomForm.get('description')?.invalid && (roomForm.get('description')?.dirty || roomForm.get('description')?.touched)" class="text-danger">
+            Description is required or Description is too long.
+          </div>
+        </div>
+
+        <!-- Number of Seats Input -->
+        <div class="form-group">
+          <label for="numberOfSeats">Number of seats</label>
+          <input type="number" class="form-control" id="numberOfSeats" formControlName="numberOfSeats" />
+          <div *ngIf="roomForm.get('numberOfSeats')?.invalid && (roomForm.get('numberOfSeats')?.dirty || roomForm.get('numberOfSeats')?.touched)" class="text-danger">
+            Number of seats is required or Must be at least 1.
+          </div>
+        </div>
+
+        <!-- Occupation Input -->
+        <div class="form-group">
+          <label for="occupation">Occupation</label>
+          <input type="checkbox" class="form-control" id="occupation" formControlName="occupation" />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" [disabled]="roomForm.invalid">Add</button>
+      </form>
+
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Room was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newRoom()">Add</button>
+    </div>
+
+  </div>
+</div>
