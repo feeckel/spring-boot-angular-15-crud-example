@@ -1,65 +1,49 @@
 package com.bezkoder.spring.jpa.h2.model;
 
+
+import lombok.*;
+
 import javax.persistence.*;
 
+/**
+ * Represents a room entity with various attributes such as title, description, number of seats, and occupation status.
+ */
+@Data
+@Builder
 @Entity
 @Table(name = "Room")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Room {
 
+	/**
+	 * The unique identifier for the room.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	/**
+	 * The title or name of the room.
+	 */
 	@Column(name = "title")
 	private String title;
 
+	/**
+	 * A brief description about the room.
+	 */
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "published")
-	private boolean published;
+	/**
+	 * Specifies the number of seats available in the room.
+	 */
+	@Column(name = "numberOfSeats")
+	private int numberOfSeats;
 
-	public Room() {
-
-	}
-
-	public Room(String title, String description, boolean published) {
-		this.title = title;
-		this.description = description;
-		this.published = published;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public boolean isPublished() {
-		return published;
-	}
-
-	public void setPublished(boolean isPublished) {
-		this.published = isPublished;
-	}
-
-	@Override
-	public String toString() {
-		return "Room [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + "]";
-	}
-
+	/**
+	 * Indicates whether the room is occupied or not.
+	 */
+	@Column(name = "occupation")
+	private boolean occupation;
 }
